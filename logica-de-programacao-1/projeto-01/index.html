@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo do número secreto</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="game">
+        <h1></h1>
+        <fieldset>
+            <p></p>
+            <input type="number" name="secret" id="secret" placeholder="Informe um número">
+            <div class="controls">
+                <button onclick="validateNumber()" id="play">Chutar</button>
+                <button onclick="resetGame()" id="reset" disabled>Novo jogo</button>
+            </div>
+        </fieldset>
+    </div>
+    <script src="js/App.js" defer></script>
+</body>
+</html>
