@@ -51,4 +51,8 @@
             color: white;
         }
     }
+
+    .resultado{
+        color: green;
+    }
 }
