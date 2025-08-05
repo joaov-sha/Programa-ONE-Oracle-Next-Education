@@ -50,6 +50,10 @@
             background-color: orangered !important;
             color: white;
         }
+
+        span{
+            margin-right: 30px;
+        }
     }
 
     .resultado{
