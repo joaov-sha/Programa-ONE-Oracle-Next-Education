@@ -5,7 +5,7 @@ import java.net.http.HttpResponse;
 import java.net.http.HttpResponse.BodyHandlers;
 import java.util.Scanner;
 
-public class Main{
+public class ApiFilmes{
     public static void main(String[] args){
         Scanner s = new Scanner(System.in);
 
