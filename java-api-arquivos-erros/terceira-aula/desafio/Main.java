@@ -1,10 +1,11 @@
 package desafio;
 
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse.BodyHandlers;
 import java.util.Scanner;
 
 import desafio.errors.InvalidPasswordException;
-import desafio.model.Login;
-import desafio.model.User;
 
 public class Main {
     
@@ -33,7 +34,7 @@ public class Main {
         }
         */
 
-        User u = new User("Joao", "MinhaSenhaForte123");
+        /*User u = new User("Joao", "MinhaSenhaForte123");
         User u1 = new User("Maria", "SenhaT");
 
         System.out.println(Login.validateLogin(u.getSenha()));
@@ -43,6 +44,17 @@ public class Main {
         } catch (InvalidPasswordException e) {
             System.out.println(e.getMessage());
         }
+        */
+
+        System.out.print("Informe o nome do usuário sobre o qual deseja buscar informações no github: ");
+
+
+        HttpClient client = HttpClient.newHttpClient();
+        HttpRequest request = HttpRequest.newBuilder()
+                                        .GET()
+                                        .uri(URI.create())
+                
+        
 
         s.close();
         System.exit(0);
