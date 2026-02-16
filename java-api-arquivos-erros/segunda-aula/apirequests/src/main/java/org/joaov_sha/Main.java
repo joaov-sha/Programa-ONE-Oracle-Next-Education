@@ -38,7 +38,7 @@ public class Main {
                     .uri(URI.create(queryString))
                     .GET()
                     .header("accept", "application/json")
-                    .header("Authorization", "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxODViMmU3YjUwMGFmYjUyNmE2Yjk0N2Y0Njg0YjM3NCIsIm5iZiI6MTcxMDk4MDYwOS44MTIsInN1YiI6IjY1ZmI3ZTAxMDQ3MzNmMDE3ZGU3MjE0MiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.yx_3PwGf0HXqPKPcYSdEfrWcEoHBjTXRyuil1UKZddA")
+                    .header("Authorization", "Bearer \'yourApiKey\'")
                     .build();
 
         //client.sendAsync(request, BodyHandlers.ofString())
