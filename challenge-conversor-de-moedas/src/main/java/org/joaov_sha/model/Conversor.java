@@ -18,11 +18,11 @@ public class Conversor {
     public static Double getFatorDeConversao(String baseTicker, String targetTicker) throws IOException, InterruptedException{
         String encodedBaseTicker = URLEncoder.encode(baseTicker, StandardCharsets.UTF_8);
         String encodedTargetTicker = URLEncoder.encode(targetTicker, StandardCharsets.UTF_8);
-        String queryString = "https://v6.exchangerate-api.com/v6/\"yourApiKey\"/pair/" + encodedBaseTicker + "/" + encodedTargetTicker;
+        String queryString = "https://v6.exchangerate-api.com/v6/\'BearerToken\'/pair/" + encodedBaseTicker + "/" + encodedTargetTicker;
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest.newBuilder()
                                         .GET()
-                                        .header("Authorization", "Bearer \"yourApiKey\"")
+                                        .header("Authorization", "\'Bearer Token\'")
                                         .header("accept", "application/json")
                                         .uri(URI.create(queryString))
                                         .build();
