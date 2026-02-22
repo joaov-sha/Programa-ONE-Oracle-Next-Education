@@ -1,5 +1,6 @@
 package models;
 
+import interfaces.FIPalindromo;
 import interfaces.FIPrimo;
 
 public class Verificador {
@@ -39,5 +40,23 @@ public class Verificador {
             return true;
         };
         return fip.verificaPrimo(numero);
+    }
+
+    public boolean verificarPalindromo(String texto){
+        FIPalindromo fipa = (txt) -> {
+            String[] arrayStrings = txt.split("");
+            StringBuilder sb = new StringBuilder();
+            for(String caractere : arrayStrings){
+                if(!caractere.equals(" ")){
+                    sb.append(caractere);
+                }
+            }
+            String sbReverse = sb.reverse().toString();
+            if(sbReverse.equalsIgnoreCase(sb.toString())){
+                return true;
+            }
+            return false;
+        };
+        return fipa.verificarPalindromo(texto);
     }
 }
