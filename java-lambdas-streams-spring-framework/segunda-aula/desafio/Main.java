@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Scanner;
 
 import models.Calculadora;
+import models.Ordenador;
 import models.Tipografo;
 import models.Verificador;
 
@@ -60,12 +61,10 @@ public class Main {
         listaDeStrings.add("Xícara");
         listaDeStrings.add("Yoga");
         listaDeStrings.add("Sol");
-        System.out.println(listaDeStrings);
 
-        Collections.sort(listaDeStrings);
+        Ordenador o = new Ordenador();
+        o.ordenarLista(listaDeStrings);
         System.out.println(listaDeStrings);
-
-        
         
         System.out.print("Informe o primeiro número que deverá ser dividido: ");
         Double primeiroNumero = s.nextDouble();
