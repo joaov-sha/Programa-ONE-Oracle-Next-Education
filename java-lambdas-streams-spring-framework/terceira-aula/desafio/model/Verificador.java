@@ -1,5 +1,7 @@
+package model;
 import java.util.ArrayList;
 import java.util.List;
+import functionalinterfaces.*;
 
 public class Verificador {
 
