@@ -1,4 +1,4 @@
-package model;
+package desafio.model;
 
 public class Produto {
     private String nome;

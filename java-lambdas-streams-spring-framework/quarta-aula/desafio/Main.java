@@ -5,7 +5,7 @@ import java.util.IntSummaryStatistics;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import model.Produto;
+import desafio.model.Produto;
 
 public class Main {
     
@@ -41,6 +41,15 @@ public class Main {
             new Produto("Mesa", 700.0, "Móveis")
         );
 
-        System.out.println(produtos.stream().collect(Collectors.<String, List<Produto>>mapping(prod -> prod, Collectors.toList())));
+        System.out.println(produtos.stream().collect(Collectors.groupingBy(Produto::getCategoria)));
+
+        // Exercício 07 -
+         //System.out.println(produtos.stream().collect());
+
+        // Exercício 08 -
+        //System.out.println(produtos.stream().max((p1, p2) -> Double.compare(p1.getPreco(), p2.getPreco())).stream().collect(Collectors.toMap(Produto::getCategoria, Produto::getPreco)));
+
+        // Exercício 09 -
+
     }
 }
