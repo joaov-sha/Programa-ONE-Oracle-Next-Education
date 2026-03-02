@@ -9,7 +9,6 @@ public class Main {
         MenuController mc = new MenuController();
         Scanner s = new Scanner(System.in);
 
-        
         mc.showMenu();
         int opcao = s.nextInt();
         mc.selectOption(opcao);
