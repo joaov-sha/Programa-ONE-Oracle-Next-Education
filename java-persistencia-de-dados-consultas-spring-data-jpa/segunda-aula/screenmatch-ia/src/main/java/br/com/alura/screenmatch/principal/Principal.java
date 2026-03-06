@@ -19,7 +19,7 @@ public class Principal {
     private ConsumoApi consumo = new ConsumoApi();
     private ConverteDados conversor = new ConverteDados();
     private final String ENDERECO = "https://www.omdbapi.com/?t=";
-    private final String API_KEY = "\"&yourApiKey\"";
+    private final String API_KEY = "\"yourApiKey\"";
     private List<DadosSerie> dadosSeries = new ArrayList<>();
     private SerieRepository serieRepository;
 
@@ -61,10 +61,11 @@ public class Principal {
     }
 
     private void listarSeriesBuscadas() {
-        List<Serie> series = new ArrayList<>();
-        series = dadosSeries.stream().map(d -> new Serie(d)).collect(Collectors.toList());
+        List<Serie> series = serieRepository.findAll();
+        //series = dadosSeries.stream().map(d -> new Serie(d)).collect(Collectors.toList());
         //dadosSeries.forEach(System.out::println);
-        series.stream().sorted(Comparator.comparing(Serie::getGenero)).forEach(System.out::println);
+        //series.stream().sorted(Comparator.comparing(Serie::getGenero)).forEach(System.out::println);
+        System.out.println(series);
     }
 
     private void buscarSerieWeb() {
