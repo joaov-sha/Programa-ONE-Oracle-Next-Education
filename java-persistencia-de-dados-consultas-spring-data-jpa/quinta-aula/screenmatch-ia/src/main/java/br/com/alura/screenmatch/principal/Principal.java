@@ -22,6 +22,7 @@ public class Principal {
     private final String ENDERECO = "https://www.omdbapi.com/?t=";
     private final String API_KEY = "\"yourApiKey\"";
     private List<DadosSerie> dadosSeries = new ArrayList<>();
+    private Optional<Serie> serieBusca;
     private SerieRepository serieRepository;
 
     private List<Serie> series = new ArrayList<>();
@@ -39,6 +40,12 @@ public class Principal {
                     3 - Listar séries
                     4 - Buscar por séries por titulo
                     5 - Buscar séries por ator
+                    6 - Buscar top 5 séries
+                    7 - Buscar séries por categoria
+                    8 - Buscar séries por temporadas e por avaliação
+                    9 - Buscar episódios por trecho do nome
+                    10 - Top 5 episódios por serie
+                    11 - 
                     0 - Sair
                     """;
 
@@ -69,7 +76,16 @@ public class Principal {
                     buscarSeriesPorCategoria();
                     break;
                 case 8:
-                    buscarSeriesPorTemporadasEAvaliacao();
+                    filtrarSeriesPorTemporadasEAvaliacao();
+                    break;
+                case 9:
+                    buscarEpisodioPorTrecho();
+                    break;
+                case 10:
+                    topEpisodiosPorSerie();
+                    break;
+                case 11:
+                    buscarEpisodiosPorData();
                     break;
                 case 0:
                     System.out.println("Saindo...");
@@ -78,6 +94,34 @@ public class Principal {
                     System.out.println("Opção inválida");
             }
         }
+    }
+
+    private void buscarEpisodiosPorData() {
+        buscarSeriePorTitulo();
+        if(serieBusca.isPresent()){
+            Serie serie = serieBusca.get();
+            System.out.print("Informe o ano limite de lançamento do episódio: ");
+            var anoLancamento = leitura.nextInt();
+            leitura.nextLine();
+
+            List<Episodio> episodiosAno = serieRepository.episodioPorSerieEAno(serie, anoLancamento);
+        }
+    }
+
+    private void topEpisodiosPorSerie() {
+        buscarSeriePorTitulo();
+        if(serieBusca.isPresent()){
+            Serie serie = serieBusca.get();
+            List<Episodio> topEpisodios = serieRepository.topEpisodiosPorSerie(serie);
+            topEpisodios.forEach(e -> System.out.printf("Série: %s Temporada %s - Episódio %s - %s%n", e.getSerie().getTitulo(), e.getTemporada(), e.getNumeroEpisodio(), e.getTitulo()));
+        }
+    }
+
+    private void buscarEpisodioPorTrecho() {
+        System.out.print("Qual o nome do episódio para busca? ");
+        var trechoEpisodio = leitura.nextLine();
+        List<Episodio> episodiosEncontrados = serieRepository.episodiosPorTrecho(trechoEpisodio);
+        episodiosEncontrados.forEach(e -> System.out.printf("Série: %s Temporada %s - Episódio %s - Avaliação %s%n", e.getSerie().getTitulo(), e.getTemporada(), e.getNumeroEpisodio(), e.getTitulo(), e.getAvaliacao()));
     }
 
     private void buscarSeriesPorCategoria() {
@@ -193,5 +237,15 @@ public class Principal {
                 totalDeTemporadas, avaliacaoMinima);
         series.forEach(s -> System.out.println(
                 s.getTitulo() + " temporada(s): " + s.getTotalTemporadas() + " avaliação: " + s.getAvaliacao()));
+    }
+
+    private void filtrarSeriesPorTemporadasEAvaliacao(){
+        System.out.print("Até quantas temporadas de série você deseja ver? ");
+        var totalDeTemporadas = leitura.nextInt();
+        leitura.nextLine();
+        System.out.print("Qual a avaliação mínima das séries que você deseja ver? ");
+        var avaliacaoMinima = leitura.nextDouble();
+        List<Serie> series = serieRepository.seriesPorTemporadaEAvaliacao(totalDeTemporadas, avaliacaoMinima);
+        System.out.println(series);
     }
 }
